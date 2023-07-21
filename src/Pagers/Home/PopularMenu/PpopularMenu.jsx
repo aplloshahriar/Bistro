@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import SectionTitle from '../../../components/Section Title/SectionTitle';
 import MenuItem from '../../Shared/MenuItem/MenuItem';
 
@@ -20,7 +20,7 @@ const PpopularMenu = () => {
             >
             </SectionTitle>
 
-            <div  className='grid md:grid-cols-2 gap-4'>
+            <div  className='grid md:grid-cols-2 gap-4 mt-12'>
                 {
                     menu.map(item => <MenuItem
                         key={item._id}
