@@ -5,12 +5,12 @@ import '../Featured/Featured.css';
 
 const Featured = () => {
     return (
-        <section className="featured-item text-yellow-700 pt-8">
+        <section className="featured-item bg-fixed text-white pt-8">
             <SectionTitle
                 heading={'Featured Item'}
                 subHeading={'Check it out'}
             ></SectionTitle>
-            <div className="md:flex justify-center items-center py-8 px-16">
+            <div className="md:flex justify-center bg-slate-400 bg-opacity-60 items-center py-8 px-16">
                 <div>
                     <img src={featured_img} alt="" />
                 </div>
@@ -20,7 +20,7 @@ const Featured = () => {
                         WHERE CAN I GET SOME?
                     </p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error voluptate facere, deserunt dolores maiores quod nobis quas quasi. Eaque repellat recusandae ad laudantium tempore consequatur consequuntur omnis ullam maxime tenetur.</p>
-                    <button className="btn btn-outline mt-2">Order Now</button>
+                    <button className="btn btn-outline btn-info border border-b-4 mt-2">Order Now</button>
                 </div>
             </div>
         </section>
