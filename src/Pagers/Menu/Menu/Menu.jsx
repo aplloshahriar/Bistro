@@ -6,11 +6,12 @@ import pizzaImg from '../../../assets/menu/pizza-bg.jpg';
 import saladImg from '../../../assets/menu/salad-bg.jpg';
 import soupImg from '../../../assets/menu/soup-bg.jpg';
 
-import PpopularMenu from '../../Home/PopularMenu/PpopularMenu';
+
 import useMenu from '../../../hooks/useMenu';
 import SectionTitle from '../../../components/Section Title/SectionTitle';
 import MenuCategory from './MenuCategory';
-import MenuItem from '../../Shared/MenuItem/MenuItem';
+
+
 
 const Menu = () => {
     const [menu] = useMenu();
