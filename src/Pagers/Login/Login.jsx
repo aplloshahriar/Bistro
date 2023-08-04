@@ -1,10 +1,23 @@
-import { useEffect } from 'react';
+import { handler } from 'daisyui';
+import { useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
+    const captchaRef=useRef(null);
+    const [disabled,setDisabled]=useState(true);
     useEffect(()=>{
         loadCaptchaEnginge(6);
     },[])
+    const handleValidateCaptcha=()=>{
+        const user_captcha_value = captchaRef.current.value;
+        if(validateCaptcha(user_captcha_value)){
+            setDisabled(false);
+        }
+        else{
+            setDisabled(true);
+        }
+
+    }
 
     const handleLogin=(event)=>{
         event.preventDefault();
@@ -41,12 +54,13 @@ const Login = () => {
                             <label className="label">
                                 <LoadCanvasTemplate> </LoadCanvasTemplate>
                             </label>
-                            <input type="text" placeholder="type the next above" name="captcha " className="input input-bordered" />
+                            <input  type="text" ref={captchaRef} placeholder="type the next above" name="captcha " className="input input-bordered" />
+                            <button onClick={handleValidateCaptcha} className="btn btn-xs mt-2">Validate</button>
                            
                         </div>
                         <div className="form-control mt-6">
 
-                            <input className="btn btn-primary" type="submit" value="Login" />
+                            <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
                 </div>
