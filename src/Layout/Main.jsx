@@ -6,15 +6,15 @@ import Category from '../Pagers/Home/category/Category';
 
 
 const Main = () => {
-        const location=useLocation();
-        const noHeaderFooter=location.pathname.includes('login');
+    const location = useLocation();
+    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('signup');
     return (
         <div>
-            { noHeaderFooter || <Nav></Nav>}
+            {noHeaderFooter || <Nav></Nav>}
             <Outlet></Outlet>
-           {noHeaderFooter || <Footer></Footer>}
+            {noHeaderFooter || <Footer></Footer>}
 
-            
+
         </div>
     );
 };

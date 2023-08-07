@@ -1,31 +1,47 @@
 import { handler } from 'daisyui';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from '../../providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
-    const captchaRef=useRef(null);
-    const [disabled,setDisabled]=useState(true);
-    useEffect(()=>{
+    const captchaRef = useRef(null);
+    const [disabled, setDisabled] = useState(true);
+    const { signIn } = useContext(AuthContext);
+
+    useEffect(() => {
         loadCaptchaEnginge(6);
-    },[])
-    const handleValidateCaptcha=()=>{
+    }, [])
+    const handleValidateCaptcha = () => {
         const user_captcha_value = captchaRef.current.value;
-        if(validateCaptcha(user_captcha_value)){
+        if (validateCaptcha(user_captcha_value)) {
             setDisabled(false);
         }
-        else{
+        else {
             setDisabled(true);
         }
 
     }
 
-    const handleLogin=(event)=>{
+    const handleLogin = (event) => {
         event.preventDefault();
-        const form=event.target;
-        const email=form.email.value;
-        const password=form.password.value;
-
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+            .then((result) => {
+                // Signed in 
+                const user = result.user;
+                console.log('login user',user);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log('errorCode and message',errorCode,errorMessage);
+            });
     }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex">
@@ -54,15 +70,16 @@ const Login = () => {
                             <label className="label">
                                 <LoadCanvasTemplate> </LoadCanvasTemplate>
                             </label>
-                            <input  type="text" ref={captchaRef} placeholder="type the next above" name="captcha " className="input input-bordered" />
+                            <input type="text" ref={captchaRef} placeholder="type the next above" name="captcha " className="input input-bordered" />
                             <button onClick={handleValidateCaptcha} className="btn btn-xs mt-2">Validate</button>
-                           
+
                         </div>
                         <div className="form-control mt-6">
 
                             <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
+                    <p className=' ms-5 mb-3'>New Here? <Link className='text-yellow-500' to='/signup'>Create An New Account </Link></p>
                 </div>
             </div>
         </div>
