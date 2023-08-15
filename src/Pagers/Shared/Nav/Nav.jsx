@@ -11,7 +11,7 @@ const Nav = () => {
         logOut()
             .then(() => { })
             .catch(error => console.log(error));
-      
+
     }
     const navOptions =
         <>
@@ -22,7 +22,15 @@ const Nav = () => {
 
 
             {
-                user ? <><li className="ms-2 mt-2" onClick={handleLogOut}> Logout</li></> :
+                user ?
+                    <>
+                        <span>
+                            <p className="ms-2 mr-2 mt-2">{ user?. displayName}</p>
+                           
+                            </span>
+                           
+                
+                        <li className="ms-2 mt-2" onClick={handleLogOut}> Logout</li></> :
                     <> <li><Link to='/login'>Login</Link></li></>
             }
         </>
