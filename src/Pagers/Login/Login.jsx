@@ -94,7 +94,7 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
 
-                                <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
+                                <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </form>
                         <p className=' ms-5 mb-3'>New Here? <Link className='text-yellow-500' to='/signup'>Create An New Account </Link></p>
