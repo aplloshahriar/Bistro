@@ -17,7 +17,7 @@ const FoodCard = ({ item }) => {
             fetch('http://localhost:5000/carts', {
                 method: 'POST',
                 headers: {
-                    "content-type": "application/json"
+                    'content-type': 'application/json'
                 },
                 body: JSON.stringify(cartItem)
 
@@ -28,7 +28,7 @@ const FoodCard = ({ item }) => {
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
-                            title: 'Your work has been saved',
+                            title: 'Food added on the cart',
                             showConfirmButton: false,
                             timer: 1500
                         })
