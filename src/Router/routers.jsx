@@ -9,14 +9,16 @@ import Menu from "../Pagers/Menu/Menu/Menu";
 import Order from "../Pagers/Order/Order/Order";
 import Login from "../Pagers/Login/Login";
 import Signup from "../Pagers/Signup/Signup";
-import PrivateRoute from"../Router/PrivateRoute";
+import PrivateRoute from "../Router/PrivateRoute";
 import Secret from "../Pagers/Shared/Secret/Secret";
+import Dashboard from "../Layout/Dashboard";
+import MyCart from "../Pagers/Dashboard/MyCart/MyCart";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-      children: [
+    children: [
       {
         path: "/",
         element: <Home></Home>,
@@ -43,7 +45,18 @@ export const router = createBrowserRouter([
       }
 
     ]
+
   },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children:[
+      {
+        path: "mycart",
+        element: <MyCart></MyCart>,
+      }
+    ]
+  }
 ]);
 
 
