@@ -27,6 +27,7 @@ const Nav = () => {
                 <Link to='/dashboard/mycart'>
                     <button className="btn  btn-outline btn-xs border-none" >
                     <FaShoppingCart></FaShoppingCart>
+                    {/* carts count on navbar  */}
                         <div className="badge badge-secondary">+{cart?.length || 0}</div>
                     </button>
                 </Link>
