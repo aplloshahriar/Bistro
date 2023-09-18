@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -51,7 +52,7 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 });
-                navigate(from,{replace:true});
+                navigate(from, { replace: true });
             })
 
     }
@@ -98,6 +99,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p className=' ms-5 mb-3'>New Here? <Link className='text-yellow-500' to='/signup'>Create An New Account </Link></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
