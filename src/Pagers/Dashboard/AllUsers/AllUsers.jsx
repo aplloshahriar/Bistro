@@ -67,7 +67,7 @@ const AllUsers = () => {
 
                                     }
                                 </td>
-                                <td><button onClick={() => handleDelete(user)} className="btn btn-ghost bg bg-red-600 text-white">
+                                <td><button onClick={() => handleDelete()} className="btn btn-ghost bg bg-red-600 text-white">
                                     <FaTrashAlt></FaTrashAlt>
                                 </button></td>
                             </tr>)
