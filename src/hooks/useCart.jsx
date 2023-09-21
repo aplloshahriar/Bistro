@@ -4,12 +4,16 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const useCart = () => {
     const { user } = useContext(AuthContext);
+    const token = localStorage.getItem('Access-Token')
 
     // tanStack/react query applied
-    const { refetch, isError, data: cart = [], error } = useQuery({
+    const { refetch, data: cart = [],  } = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async () => {
-            const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`)
+            const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
+                headers: {
+                    authorization:`bearer ${token}`
+                }})
             if (!response.ok) {
                 throw new Error('Network response was not ok')
             }
