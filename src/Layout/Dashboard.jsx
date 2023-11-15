@@ -35,8 +35,9 @@ const Dashboard = () => {
                         isAdmin ? <>
                             <li><NavLink to='/dashboard/home'><FaHome></FaHome>Admin Home</NavLink></li>
                             <li><NavLink to='/dashboard/addItem'> <FaUtensils></FaUtensils> Add An Item </NavLink></li>
-                            <li><NavLink to='/dashboard/paymentHistory'><FaWallet></FaWallet>Manage Items</NavLink></li>
-                            <li><NavLink to='/dashboard/paymentHistory'><FaBook></FaBook>Manage Bookings</NavLink></li>
+                            <li><NavLink to='/dashboard/manageItems'><FaWallet></FaWallet>Manage Items</NavLink></li>
+                         
+                            <li><NavLink to='/dashboard/manageItems'><FaBook></FaBook>Manage Bookings</NavLink></li>
                             <li><NavLink to='/dashboard/allusers'><FaUsers></FaUsers>All Users</NavLink></li>
 
 

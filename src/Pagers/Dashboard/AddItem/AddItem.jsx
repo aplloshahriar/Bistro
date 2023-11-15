@@ -27,11 +27,11 @@ const AddItem = () => {
                     const imgURL = imgResponse.data.display_url;
                     const { name, price, category, recipe } = data;
                     const newItem = { name, price: parseFloat(price), category, recipe, image: imgURL }
-                    console.log(newItem)
+                    console.log(newItem);
                     axiosSecure.post('/menu', newItem)
                         .then(data => {
                             console.log('after posting new menu item', data.data)
-                            if(data.data.insertedId){
+                            if (data.data.insertedId) {
                                 reset();
                                 Swal.fire({
                                     position: 'top-end',
@@ -39,7 +39,7 @@ const AddItem = () => {
                                     title: 'Item added successfully',
                                     showConfirmButton: false,
                                     timer: 1500
-                                  })
+                                })
                             }
                         })
                 }
@@ -61,8 +61,8 @@ const AddItem = () => {
                     <label className="label">
                         <span className="label-text font-semibold"> Recipe name*</span>
                     </label>
-                    <input type="text" placeholder="Recipe name"
-                        {...register(" name", { required: true, maxLength: 120 })}
+                    <input type="text"  {...register("name", { required: true, maxLength: 120 })} placeholder="Recipe name"
+
                         className="input input-bordered w-full " />
                 </div>
 
