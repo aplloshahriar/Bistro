@@ -60,7 +60,7 @@ const CheckoutForm = ({ cart, price }) => {
             setCardError('');
         }
 
-        setProcessing(true)
+        setProcessing(true);
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -78,8 +78,9 @@ const CheckoutForm = ({ cart, price }) => {
             console.log(confirmError);
         }
 
-        console.log('payment intent', paymentIntent)
-        setProcessing(false)
+        console.log('payment intent', paymentIntent);
+
+        setProcessing(false);
 
 
         if (paymentIntent.status === 'succeeded') {
@@ -130,13 +131,13 @@ const CheckoutForm = ({ cart, price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-outline btn-warning" type="submit" disabled={!stripe || !clientSecret || !processing}>
+                <button className="btn btn-outline btn-warning" type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
 
             {cardError && <p className="text-red-600">{cardError}</p>}
-            {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>}
+            {transactionId && <p className="text-green-500">Transaction complete. Transaction Id: {transactionId}</p>}
         </>
     );
 };
