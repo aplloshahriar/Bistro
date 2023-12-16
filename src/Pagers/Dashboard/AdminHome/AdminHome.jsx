@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { Bar, BarChart, CartesianGrid, Cell, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, Cell, Legend, XAxis, YAxis } from "recharts";
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 
 
@@ -130,24 +130,25 @@ const AdminHome = () => {
 
                 {/* pi chart */}
                 <div className="w-1/2">
-                <ResponsiveContainer width="100%" height="100%">
-                    <PieChart width={400} height={400}>
-                        <Pie
-                            data={chartData}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            label={renderCustomizedLabel}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="count"
-                        >
-                            {chartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                            ))}
-                        </Pie>
-                    </PieChart>
-                </ResponsiveContainer>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <PieChart width={400} height={400}>
+                            <Legend></Legend>
+                            <Pie
+                                data={chartData}
+                                cx="50%"
+                                cy="50%"
+                                labelLine={false}
+                                label={renderCustomizedLabel}
+                                outerRadius={80}
+                                fill="#8884d8"
+                                dataKey="count"
+                            >
+                                {chartData.map((entry, index) => (
+                                    <Cell name={entry.category} key={`cell-${index}`} fill={colors[index % colors.length]} />
+                                ))}
+                            </Pie>
+                        </PieChart>
+                    </ResponsiveContainer>
                 </div>
             </div>
         </div>
